@@ -130,7 +130,7 @@ const App = () => {
             <Bar data={data} options={options} />
             <div id="compressionOutput" className="title">
               Compression Percentage: {compressionPercent}% <br /> <br />
-              Compression Algorithm: PNG Compression
+              Compression Algorithm: PNG Compression, Lossless
             </div>
             <div className="download-links">
               <a href={originalBlob} download="original_image.png">Download Original Image</a>
