@@ -111,7 +111,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Image Entropy Calculator</h1>
+      <h1>Image Entropy Calculator V2</h1>
       <div className="image-container">
         <input type="file" onChange={handleImageUpload} accept="image/jpeg, image/png, image/webp" />
         <div className="images-display">
