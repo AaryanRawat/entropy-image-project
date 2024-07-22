@@ -7,6 +7,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const App = () => {
   const [imageSrc, setImageSrc] = useState(null);
+  const [compressedImageSrc, setCompressedImageSrc] = useState(null);
   const [entropy, setEntropy] = useState(null);
   const [originalSize, setOriginalSize] = useState(null);
   const [compressedSize, setCompressedSize] = useState(null);
@@ -84,6 +85,7 @@ const App = () => {
 
       const compressionPercent = ((originalSize - compressedSize) / originalSize) * 100;
       setCompressionPercent(compressionPercent.toFixed(2));
+      setCompressedImageSrc(URL.createObjectURL(blob));
     }, 'image/png');
   };
 
@@ -112,13 +114,22 @@ const App = () => {
       <h1>Image Entropy Calculator</h1>
       <div className="image-container">
         <input type="file" onChange={handleImageUpload} accept="image/jpeg, image/png, image/webp" />
-        {imageSrc && <img src={imageSrc} alt="Uploaded" id="uploadedImage" />}
+        <div className="images-display">
+          <div>
+            {imageSrc && <img src={imageSrc} alt="Original" id="originalImage" />}
+            {imageSrc && <div className="image-label">Original Image</div>}
+          </div>
+          <div>
+            {compressedImageSrc && <img src={compressedImageSrc} alt="Compressed" id="compressedImage" />}
+            {compressedImageSrc && <div className="image-label">Compressed Image</div>}
+          </div>
+        </div>
         {entropy && <div id="entropyOutput" className="title">Shannon Entropy: {entropy}</div>}
         {originalSize && compressedSize && (
           <div>
             <Bar data={data} options={options} />
-            <div id="compressionInfo" className="title">
-              Compression Percentage: {compressionPercent}% <br /> <br/>
+            <div id="compressionOutput" className="title">
+              Compression Percentage: {compressionPercent}% <br /> <br />
               Compression Algorithm: PNG Compression
             </div>
             <div className="download-links">
