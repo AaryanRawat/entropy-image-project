@@ -20,3 +20,14 @@ img {
 .title {
   margin-top: 10px;
 }
+.download-links {
+  margin-top: 20px;
+}
+.download-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+.download-links a:hover {
+  text-decoration: underline;
+}
